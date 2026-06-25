@@ -45,7 +45,7 @@ describe('Reservas - Restful Booker', () => {
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
 
-        cy.fixture('reserva.json').then((reserva) => {
+        cy.fixture('reserve.json').then((reserva) => {
             cy.completarFormularioReserva(reserva.nombre, reserva.apellido, reserva.emailSinDominio, reserva.telefono)
         })
 
@@ -59,7 +59,7 @@ describe('Reservas - Restful Booker', () => {
     it('Teléfono con menos dígitos de los requeridos', () => {
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
-        cy.fixture('reserva.json').then((reserva) => {
+        cy.fixture('reserve.json').then((reserva) => {
             cy.completarFormularioReserva(reserva.nombre, reserva.apellido, reserva.email, reserva.TelefonoCorto)
         })
 
@@ -73,7 +73,7 @@ describe('Reservas - Restful Booker', () => {
     it('Nombre con un solo carácter', () => {
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
-        cy.fixture('reserva.json').then((reserva) => {
+        cy.fixture('reserve.json').then((reserva) => {
             cy.completarFormularioReserva(reserva.nombreCorto, reserva.apellido, reserva.email, reserva.telefono)
         })
 
@@ -89,7 +89,7 @@ describe('Reservas - Restful Booker', () => {
         cy.get(':nth-child(2) > .react-datepicker-wrapper > .react-datepicker__input-container > .form-control').type('13/07/2026')
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
-        cy.fixture('reserva.json').then((reserva) => {
+        cy.fixture('reserve.json').then((reserva) => {
             cy.completarFormularioReserva(reserva.nombreConEspacios, reserva.apellidoConEspacios, reserva.email, reserva.telefono)
         })
 
@@ -99,4 +99,4 @@ describe('Reservas - Restful Booker', () => {
 
     })
 
-})  // ← cierra el describe
+})

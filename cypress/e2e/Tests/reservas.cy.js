@@ -10,7 +10,7 @@ describe('Reservas - Restful Booker', () => {
 
     })
 
-    it.skip('Enviar formulario sin completar ningún campo', () => {
+    it('Enviar formulario sin completar ningún campo', () => {
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
         cy.get('.btn-primary').click()
@@ -18,7 +18,7 @@ describe('Reservas - Restful Booker', () => {
 
     })
 
-    it.skip('Verificar mensajes de error correspondientes', () => {
+    it('Verificar mensajes de error correspondientes', () => {
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
         cy.get('.btn-primary').click()
@@ -32,7 +32,7 @@ describe('Reservas - Restful Booker', () => {
 
     })
 
-    it.skip('Verificar que no se realizó ninguna reserva', () => {
+    it('Verificar que no se realizó ninguna reserva', () => {
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
         cy.get('.btn-primary').click()
@@ -41,7 +41,7 @@ describe('Reservas - Restful Booker', () => {
 
     })
 
-    it.skip('Email sin dominio', () => {
+    it('Email sin dominio', () => {
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
 
@@ -56,7 +56,7 @@ describe('Reservas - Restful Booker', () => {
         
     })
 
-    it.skip('Teléfono con menos dígitos de los requeridos', () => {
+    it('Teléfono con menos dígitos de los requeridos', () => {
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
         cy.fixture('reserva.json').then((reserva) => {
@@ -70,7 +70,7 @@ describe('Reservas - Restful Booker', () => {
 
     })
 
-    it.skip('Nombre con un solo carácter', () => {
+    it('Nombre con un solo carácter', () => {
         cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
         cy.get('#doReservation').click()
         cy.fixture('reserva.json').then((reserva) => {

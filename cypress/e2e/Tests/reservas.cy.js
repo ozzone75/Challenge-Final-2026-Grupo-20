@@ -84,7 +84,19 @@ describe('Reservas - Restful Booker', () => {
         
     })
 
-    it.skip('Nombre con espacios al inicio y al final', () => {
+    it('Nombre con espacios al inicio y al final', () => {
+        cy.get(':nth-child(1) > .react-datepicker-wrapper > .react-datepicker__input-container > .form-control').type('11/07/2026')
+        cy.get(':nth-child(2) > .react-datepicker-wrapper > .react-datepicker__input-container > .form-control').type('13/07/2026')
+        cy.get(':nth-child(1) > .card > .card-footer > .btn').click()
+        cy.get('#doReservation').click()
+        cy.fixture('reserva.json').then((reserva) => {
+            cy.completarFormularioReserva(reserva.nombreConEspacios, reserva.apellidoConEspacios, reserva.email, reserva.telefono)
+        })
+
+        cy.get('.btn-primary').click()
+        cy.get('.alert').should('not.exist')
+        cy.get(':nth-child(1) > .col-lg-4 > .card > .card-body > .card-title').should('contain.text', 'Booking Confirmed') // Hay que cambiar los nombres para probarlo porque si no tira error!
+
     })
 
     it.skip('Reserva de un solo día - check-in y check-out el mismo día', () => {

@@ -1,7 +1,9 @@
 {
     "nombre": "Juan",
     "nombreCorto": "J",
+    "nombreConEspacios": "  Elpis  ",
     "apellido": "Valdez",
+    "apellidoConEspacios": "  Tolero  ",
     "email": "juan@valdez",
     "emailSinDominio": "juan@",
     "telefono": "351355555555",

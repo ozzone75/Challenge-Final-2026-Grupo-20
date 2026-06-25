@@ -63,3 +63,56 @@ Cypress.Commands.add('selectBookingDates', () => {
         .trigger('mousemove', { buttons: 1, force: true })
         .trigger('mouseup', { which: 1, buttons: 0, force: true })
 })
+
+
+// Convierte una fecha en formato "dd/MM/yyyy" a un objeto Date de JavaScript.
+function convertirFecha(fecha) {
+
+    // Divide la fecha por "/" y convierte cada parte a número.
+    // Ejemplo: "10/06/2026" -> [10, 6, 2026]
+    const [dia, mes, anio] = fecha.split('/').map(Number);
+
+    // Crea un objeto Date.
+    // Se resta 1 al mes porque JavaScript numera los meses de 0 a 11.
+    return new Date(anio, mes - 1, dia);
+}
+
+// Comando personalizado de Cypress que realiza el flujo de reserva.
+Cypress.Commands.add('reservarHabitacion', (datos) => {
+
+    // Completa el campo de fecha de inicio con el valor recibido desde el fixture.
+    cy.get('@fechaInicio')
+        .clear()
+        .type(datos.fechaInicio);
+
+    // Completa el campo de fecha de fin con el valor recibido desde el fixture.
+    cy.get('@fechaFin')
+        .clear()
+        .type(datos.fechaFin);
+
+    // Calcula la cantidad de noches entre ambas fechas.
+    // La resta entre dos objetos Date devuelve la diferencia en milisegundos.
+    // Luego se convierte a días.
+    const noches =
+        (convertirFecha(datos.fechaFin) - convertirFecha(datos.fechaInicio))
+        / (1000 * 60 * 60 * 24);
+
+    // Guarda la cantidad de noches como un alias para reutilizarla
+    // posteriormente en otros comandos o tests.
+    cy.wrap(noches).as('noches');
+
+    // Hace clic en el botón "Check Availability".
+    cy.get('.col-8 > .btn').click();
+
+    // Selecciona la primera habitación disponible.
+    cy.get(':nth-child(1) > .card > .card-footer > .btn').click();
+
+    // Verifica que el evento de la reserva aparezca en el calendario.
+    cy.get('.rbc-event')
+        .should('be.visible');
+
+    // Verifica que el evento indique que la habitación fue seleccionada.
+    cy.get('.rbc-event-content')
+        .should('contain', 'Selected');
+
+});

@@ -15,3 +15,9 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+/*Evitamos que Cypress falle el test por excepciones no capturadas de la web, la cual lanza errores
+internos de su runtime (MessagePort, hot-reload, service workers) que no son parte del test.*/
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false
+})

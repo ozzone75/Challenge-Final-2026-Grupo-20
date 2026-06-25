@@ -1,0 +1,9 @@
+{
+    "nombre": "Juan",
+    "nombreCorto": "J",
+    "apellido": "Valdez",
+    "email": "juan@valdez",
+    "emailSinDominio": "juan@",
+    "telefono": "351355555555",
+    "TelefonoCorto": "123"
+}

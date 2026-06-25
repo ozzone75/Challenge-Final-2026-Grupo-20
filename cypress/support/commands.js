@@ -23,3 +23,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('completarFormularioReserva', (nombre, apellido, email, telefono) => {
+    cy.get('[name="firstname"]').type(nombre)
+    cy.get('[name="lastname"]').type(apellido)
+    cy.get('[name="email"]').type(email)
+    cy.get('[name="phone"]').type(telefono)
+})

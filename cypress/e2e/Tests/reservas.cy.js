@@ -99,7 +99,4 @@ describe('Reservas - Restful Booker', () => {
 
     })
 
-    it.skip('Reserva de un solo día - check-in y check-out el mismo día', () => {
-    })
-
 })  // ← cierra el describe

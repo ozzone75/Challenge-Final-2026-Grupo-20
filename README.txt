@@ -4,6 +4,6 @@ Excel: https://docs.google.com/spreadsheets/d/18DExaubxEsVcUL_vX1pSUmBagvIsKa01E
 
 Integrantes:
 -Lorena Pereyra
--Agustín Chiambi
+-Agustín Cachambi
 -Cristian Casco
 -Leandro Boll
